@@ -7,7 +7,12 @@
     "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["cashlog", "gastos", "financeiro", "api"],
+  "keywords": [
+    "cashlog",
+    "gastos",
+    "financeiro",
+    "api"
+  ],
   "author": "CashLog Team",
   "license": "MIT",
   "description": "Backend API para controle de gastos pessoais",
