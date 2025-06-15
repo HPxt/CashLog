@@ -1,0 +1,66 @@
+# Arquivos de Configuração Sensíveis
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependências
+node_modules/
+*/node_modules/
+.pnpm-store/
+
+# Arquivos de Build
+dist/
+build/
+.next/
+.nuxt/
+
+# Arquivos de Cache
+.cache/
+.parcel-cache/
+.nx/
+
+# Arquivos de Sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.metadata
+.classpath
+.settings/
+
+# Arquivos Temporários
+*.tmp
+*.temp
+
+# Arquivos de Backup
+*.bak
+*.backup
+
+# Arquivos específicos do Windows
+desktop.ini
+
+# Arquivos específicos do macOS
+.AppleDouble
+.LSOverride 
