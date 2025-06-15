@@ -17,13 +17,13 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Importar rotas quando criadas
-// const gastosRoutes = require('./routes/gastos');
+// Importar rotas
+const gastosRoutes = require('./routes/gastos');
 // const metasRoutes = require('./routes/metas');
 // const categoriasRoutes = require('./routes/categorias');
 
 // Usar rotas
-// app.use('/api/gastos', gastosRoutes);
+app.use('/api/gastos', gastosRoutes);
 // app.use('/api/metas', metasRoutes);
 // app.use('/api/categorias', categoriasRoutes);
 
