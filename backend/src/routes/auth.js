@@ -5,7 +5,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 
 // Middlewares
-const authMiddleware = require('../middleware/auth');
+const { authenticateToken: authMiddleware } = require('../middleware/auth');
 const { rateLimiters } = require('../middleware/security');
 
 // Validações
@@ -21,7 +21,7 @@ const {
   validateChangePassword,
   sanitizeAuthData,
   validatePasswordStrength,
-  authRateLimit: authRateLimitValidator
+  authRateLimit
 } = require('../validations/authValidation');
 
 /**
@@ -40,7 +40,7 @@ const {
  */
 router.post('/register',
   rateLimiters.auth, // Rate limit específico para auth
-  authRateLimitValidator, // Validador de rate limit
+  authRateLimit, // Validador de rate limit
   sanitizeAuthData, // Sanitizar dados
   validateRegister, // Validar dados de registro
   validatePasswordStrength, // Validar força da senha
@@ -54,7 +54,7 @@ router.post('/register',
  */
 router.post('/login',
   rateLimiters.auth, // Rate limit específico para auth
-  authRateLimitValidator,
+  authRateLimit,
   sanitizeAuthData,
   validateLogin,
   authController.login
@@ -67,7 +67,7 @@ router.post('/login',
  */
 router.post('/forgot-password',
   rateLimiters.auth,
-  authRateLimitValidator,
+  authRateLimit,
   sanitizeAuthData,
   validateForgotPassword,
   authController.forgotPassword
@@ -80,7 +80,7 @@ router.post('/forgot-password',
  */
 router.post('/reset-password',
   rateLimiters.auth,
-  authRateLimitValidator,
+  authRateLimit,
   sanitizeAuthData,
   validateResetPassword,
   validatePasswordStrength,
