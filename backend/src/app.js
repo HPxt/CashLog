@@ -61,6 +61,7 @@ app.use(attackDetection);
 app.use(loginAttemptLogger);
 
 // Importar rotas
+const authRoutes = require('./routes/auth');
 const gastosRoutes = require('./routes/gastos');
 const categoriasRoutes = require('./routes/categorias');
 const metasRoutes = require('./routes/metas');
@@ -78,6 +79,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Usar rotas da API
+app.use('/api/auth', authRoutes);
 app.use('/api/gastos', gastosRoutes);
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/metas', metasRoutes);
@@ -91,12 +93,28 @@ app.get('/api', (req, res) => {
     description: 'API para controle de gastos pessoais',
     endpoints: {
       health: '/api/health',
+      auth: '/api/auth',
       gastos: '/api/gastos',
       categorias: '/api/categorias',
       metas: '/api/metas',
       security: '/api/security'
     },
     documentation: {
+      auth: {
+        'POST /api/auth/register': 'Cadastrar novo usuário',
+        'POST /api/auth/login': 'Login de usuário',
+        'POST /api/auth/logout': 'Logout de usuário',
+        'POST /api/auth/forgot-password': 'Solicitar reset de senha',
+        'POST /api/auth/reset-password': 'Confirmar reset de senha',
+        'POST /api/auth/verify-email': 'Verificar email',
+        'GET /api/auth/me': 'Obter dados do usuário logado',
+        'GET /api/auth/sessions': 'Listar sessões ativas',
+        'POST /api/auth/refresh-token': 'Renovar token JWT',
+        'PUT /api/auth/profile': 'Atualizar perfil',
+        'POST /api/auth/change-password': 'Alterar senha',
+        'DELETE /api/auth/account': 'Desativar conta',
+        'GET /api/auth/health': 'Health check do sistema de auth'
+      },
       gastos: {
         'GET /api/gastos': 'Listar todos os gastos (com filtros opcionais)',
         'GET /api/gastos/stats': 'Obter estatísticas dos gastos',
@@ -164,6 +182,7 @@ app.use('*', (req, res) => {
     message: `Endpoint ${req.method} ${req.originalUrl} não existe`,
     availableEndpoints: {
       health: 'GET /api/health',
+      auth: 'GET|POST /api/auth',
       gastos: 'GET|POST /api/gastos',
       categorias: 'GET|POST /api/categorias', 
       metas: 'GET|POST /api/metas'
