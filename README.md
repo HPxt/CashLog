@@ -87,7 +87,8 @@ Este projeto foi planejado para desenvolvimento em equipe:
 
 ## 📞 Suporte
 
-Consulte a documentação nos arquivos de planejamento ou abra uma issue para dúvidas e sugestões.
+Consulte a documentação nos arquivos de planejamento ou abra uma issue para dúvidas e sugestões. Responderemos assim que possivel
+
 
 ---
 **Desenvolvido com ❤️ para controle financeiro pessoal** 
